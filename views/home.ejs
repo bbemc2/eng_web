@@ -1,0 +1,16 @@
+<%- include("header"); -%>
+<h1>Home</h1>
+<hr>
+<div>
+<% postArray.reverse().forEach(function(post){ %>
+    <h2><%= post.date %>  <%= post.dayOfTheWeek %></h2>
+    <p> 
+        <ol>
+            <li> <%= post.s1 %> </li>
+            <li> <%= post.s2 %> </li>
+            <li> <%= post.s3 %> </li>
+        </ol>
+    </p>
+<% }) %>
+</div>
+<%- include("footer"); -%>
