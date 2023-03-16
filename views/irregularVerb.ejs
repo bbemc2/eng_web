@@ -22,7 +22,7 @@
         
       <thead>
         <tr class="bg-light">
-          <th scope="col" width="5%"><input class="form-check-input" type="checkbox"></th>
+          <th scope="col" width="5%">
           <th scope="col" width="5%">#</th>
           <th scope="col" width="30%">Base form</th>
           <th scope="col" width="30%">Past tense</th>
@@ -33,7 +33,7 @@
   <tbody>
     <% verbArray.forEach(function(verb){ %>
         <tr>
-        <th scope="row"><input class="form-check-input" type="checkbox" name="onOffSwitch" id="onOffSwitch" <%= onOffSwitch ? "checked" : "" %>></th>
+        <th scope="row"><input type="checkbox" class="custom-control-input" name="onOffSwitch" id="onOffSwitch" <%= params.onOffSwitch ? "checked" : "" %> ></th>
         <td> <%= verb.no %> </td>
         <td> <%= verb.baseForm %> </td>
         <td> <%= verb.pastTense %> </td>
