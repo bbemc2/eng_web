@@ -26,7 +26,7 @@ const postSchema = {
     dayOfTheWeek: String, 
     s1: String,
     s2: String,
-    s3: String
+    s3: String,
 };
 
 const Post = mongoose.model("Post", postSchema);
@@ -46,13 +46,22 @@ const ben = new UserPost ({
 });
 // ben.save();
 
-const post1 = new Post ({
-    date: "3-11",
-    dayOfTheWeek: "Monday",
-    s1: "great",
-    s2: "hi",
-    s3: "bye"
-});
+const verbSchema = {
+    no: Number,
+    baseForm: String,
+    pastTense: String,
+    pastParticiple: String
+};
+
+const Verb = mongoose.model("Verb", verbSchema);
+
+// const post1 = new Post ({
+//     date: "3-11",
+//     dayOfTheWeek: "Monday",
+//     s1: "great",
+//     s2: "hi",
+//     s3: "bye"
+// });
 // post1.save();
 
 
@@ -92,21 +101,48 @@ app.route("/:dayOfWeek")
 }
 });
 
-app.post("/hw/:userID", async (req,res) => { try {
 
-    const newUserPost = await new UserPost({
-        user: userID,
-        date:req.body.date,
-        s1:req.body.sentence,
-        q1: req.body.question
+app.route("/irregular-verb")
+.get(async(req,res) => { try {
+    const foundVerbs = await Verb.find()
+    res.render("irregularVerb", {verbArray:foundVerbs});
+    } catch(err){
+    res.send(err)
+}
+})
+.post(async (req,res) => { try {
+
+    const newVerb = await new Verb({
+        no: req.body.no,
+        baseForm: req.body.baseForm,
+        pastTense: req.body.pastTense,
+        pastParticiple: req.body.pastParticiple
     });
-    newUserPost.save();
+    newVerb.save();
     res.send("success");
 
     } catch (err) {
         res.send(err)
     }
-    });
+});
+
+
+
+// app.post("/hw/:userID", async (req,res) => { try {
+
+//     const newUserPost = await new UserPost({
+//         user: userID,
+//         date:req.body.date,
+//         s1:req.body.sentence,
+//         q1: req.body.question
+//     });
+//     newUserPost.save();
+//     res.send("success");
+
+//     } catch (err) {
+//         res.send(err)
+//     }
+//     });
 
 
 app.listen(3000, function() {

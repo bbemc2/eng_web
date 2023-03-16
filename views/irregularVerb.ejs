@@ -1,0 +1,48 @@
+<%- include("header"); -%>
+
+<div class="container mt-5 px-2">
+<!--     
+    <div class="mb-2 d-flex justify-content-between align-items-center">
+        
+        <div class="position-relative">
+            <span class="position-absolute search"><i class="fa fa-search"></i></span>
+            <input class="form-control w-100" placeholder="Search by order#, name...">
+        </div>
+        
+        <div class="px-2">
+            
+            <span>Filters <i class="fa fa-angle-down"></i></span>
+            <i class="fa fa-ellipsis-h ms-3"></i>
+        </div>
+        
+    </div> -->
+    <div class="table-responsive">
+    <table class="table table-responsive table-borderless">
+        
+      <thead>
+        <tr class="bg-light">
+          <th scope="col" width="5%"><input class="form-check-input" type="checkbox"></th>
+          <th scope="col" width="5%">#</th>
+          <th scope="col" width="30%">Base form</th>
+          <th scope="col" width="30%">Past tense</th>
+          <th scope="col" class="text-end" width="30%"><span>Past participle</span></th>
+        </tr>
+      </thead>
+
+  <tbody>
+    <% verbArray.forEach(function(verb)){ %>
+        <tr>
+        <th scope="row"><input class="form-check-input" type="checkbox"></th>
+        <td> <%= verb.no %> </td>
+        <td> <%= verb.baseForm %> </td>
+        <td> <%= verb.pastTense %> </td>
+        <td class="text-end"><span class="fw-bolder"> <%= verb.pastParticiple %> </span> <i class="fa fa-ellipsis-h  ms-2"></i></td>
+        </tr>
+    <% }) %>
+  </tbody>
+</table>
+  
+  </div>
+    
+</div>
+<%- include("footer"); -%>
