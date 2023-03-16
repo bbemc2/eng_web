@@ -106,7 +106,7 @@ app.route("/exe/irregular-verb")
 .get(async(req,res) => { try {
     const foundVerbs = await Verb.find();
     const onOffSwitch =req.body.onOffSwitch;
-    res.render("irregularVerb", {verbArray:foundVerbs});
+    res.render("irregularVerb", {verbArray:foundVerbs, onOffSwitch:onOffSwitch});
     } catch(err){
     res.send(err)
 }
