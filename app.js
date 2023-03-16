@@ -67,7 +67,7 @@ const Verb = mongoose.model("Verb", verbSchema);
 
 app.route("/")
 .get(async(req,res) => { try {
-    const foundArticles = await Post.find()
+    const foundArticles = await Post.find();
     res.render("home", {postArray:foundArticles});
     } catch(err){
     res.send(err)
@@ -102,9 +102,9 @@ app.route("/:dayOfWeek")
 });
 
 
-app.route("/irregular-verb")
+app.route("/exe/irregular-verb")
 .get(async(req,res) => { try {
-    const foundVerbs = await Verb.find()
+    const foundVerbs = await Verb.find();
     res.render("irregularVerb", {verbArray:foundVerbs});
     } catch(err){
     res.send(err)
